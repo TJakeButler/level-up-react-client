@@ -1,0 +1,6 @@
+.event {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    border: solid 1px pink;
+}

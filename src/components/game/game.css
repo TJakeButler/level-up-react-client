@@ -1,0 +1,7 @@
+.game {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px pink;
+    justify-content: center;
+    padding: 1rem;
+}
