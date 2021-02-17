@@ -9,9 +9,7 @@ export const GameProvider = (props) => {
     console.log("This is props", props)
     console.log("This is gameTypes",gameTypes)
 
-    // games.map(game => {
-    //     console.log(game.id)
-    // })
+    
     const getGames = () => {
         return fetch("http://localhost:8000/games", {
             headers:{
