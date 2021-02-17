@@ -4,7 +4,7 @@ import { EventContext } from "./EventProvider.js"
 import './event.css'
 
 export const EventList = (props) => {
-    const { events, getEvents } = useContext(EventContext)
+    const { events, getEvents, joinEvent, leaveEvent } = useContext(EventContext)
 
     useEffect(() => {
         getEvents()
@@ -22,22 +22,21 @@ export const EventList = (props) => {
             </header>
             {
                 events.map(event => {
-                    
-                    return <section key={event.id} className="event">
-                        <div className="event__game">The game played will be {event.game.title}</div>
-                        <div className="event_location">At {event.location}</div>
-                        <div> Date and time will be: 
-                            {
-                                new Date(event.event_time).toLocaleDateString("en-US",
-                                {
-                                    weekday: 'long',
-                                    year: 'numeric',
-                                    month: 'long',
-                                    day: 'numeric'
-                                })
-                                
-                            }
+                    return <section key={event.id} className="registration">
+                        <div className="registration__game">{event.game.title}</div>
+                        <div>{event.description}</div>
+                        <div>
+                            {event.date} @ {event.time}
                         </div>
+                        {
+                            event.joined
+                                ? <button className="btn btn-3"
+                                    onClick={() => leaveEvent(event.id)}
+                                    >Leave</button>
+                                : <button className="btn btn-2"
+                                    onClick={() => joinEvent(event.id)}
+                                    >Join</button>
+                        }
                     </section>
                 })
             }
